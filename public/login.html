@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Sponsorease</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="login-container">
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+      <input type="email" name="email" placeholder="Email Address" required />
+      <select name="role" required>
+        <option value="">Select Role</option>
+        <option value="user">Organizer</option>
+        <option value="sponsor">Sponsor</option>
+      </select>
+      <button type="submit">Login</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+  </footer>
+</body>
+</html>

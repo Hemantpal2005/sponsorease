@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Event - Sponsorease</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.webp" alt="Logo" class="logo">
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="logout">Logout</a>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <h1>Submit Your Event</h1>
+    <form action="/submit-user-request" method="POST" enctype="multipart/form-data">
+      <label for="eventTitle">Event Title:</label>
+      <input type="text" id="eventTitle" name="eventTitle" required>
+
+      <label for="eventHost">Event Host Name:</label>
+      <input type="text" id="eventHost" name="eventHost" required>
+
+      <label for="hostEmail">Event Host Email:</label>
+      <input type="email" id="hostEmail" name="hostEmail" required>
+
+      <label for="eventHead">Event Head Name:</label>
+      <input type="text" id="eventHead" name="eventHead" required>
+
+      <label for="eventEmail">Event Email ID:</label>
+      <input type="email" id="eventEmail" name="eventEmail" required>
+
+      <label for="location">Event Location:</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="date">Event Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="duration">Duration (in days):</label>
+      <input type="number" id="duration" name="duration" required min="1">
+
+      <label for="audienceSize">Expected Audience Size:</label>
+      <input type="number" id="audienceSize" name="audienceSize" required>
+
+      <label for="description">Event Description:</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <label for="chiefGuests">Chief Guest(s):</label>
+      <input type="text" id="chiefGuests" name="chiefGuests" placeholder="Add names separated by commas" required>
+
+      <label for="sponsorshipAmount">Required Sponsorship Amount (INR):</label>
+      <input type="number" id="sponsorshipAmount" name="sponsorshipAmount" required>
+
+      <label for="brochure">Upload Event Brochure (PDF only):</label>
+      <input type="file" id="brochure" name="brochure" accept="application/pdf">
+
+      <label for="instagram">Instagram Link:</label>
+      <input type="url" id="instagram" name="instagram">
+
+      <label for="facebook">Facebook Link:</label>
+      <input type="url" id="facebook" name="facebook">
+
+      <label for="linkedin">LinkedIn Link:</label>
+      <input type="url" id="linkedin" name="linkedin">
+
+      <label for="benefits">What will the sponsor get?</label>
+      <textarea id="benefits" name="benefits" rows="3" required></textarea>
+
+      <label for="category">Event Category:</label>
+      <select id="category" name="category" required>
+        <option value="">Select Category</option>
+        <option value="Tech Fest">Tech Fest</option>
+        <option value="Cultural Fest">Cultural Fest</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Hackathon">Hackathon</option>
+        <option value="Sports">Sports</option>
+      </select>
+
+      <button type="submit">Submit Event</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function initializeAutocomplete() {
+      const input = document.getElementById("location");
+      new google.maps.places.Autocomplete(input);
+    }
+    google.maps.event.addDomListener(window, "load", initializeAutocomplete);
+  </script>
+</body>
+</html>

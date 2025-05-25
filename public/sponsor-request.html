@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register as Sponsor - Sponsorease</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <h1>Become a Sponsor</h1>
+    <form method="POST" action="/submit-sponsor-request">
+      <input type="text" name="name" placeholder="Your Name or Organization" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="text" name="industry" placeholder="Industry / Category" required />
+      <input type="text" name="location" placeholder="Location" required />
+      <textarea name="mission" placeholder="Your Mission or Focus Areas" rows="3" required></textarea>
+      <textarea name="sponsorshipType" placeholder="What type of events are you interested in sponsoring?" rows="3" required></textarea>
+      <button type="submit">Register</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+  </footer>
+</body>
+</html>

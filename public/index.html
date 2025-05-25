@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sponsorease - Connect with the Right Sponsor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <section class="hero" data-aos="fade-up">
+    <h1>Connecting Events with the Right Sponsors</h1>
+    <p>Submit your event. Get discovered. Make it happen.</p>
+    <div class="cta-buttons">
+      <button onclick="location.href='user-request.html'">🚀 Find Sponsors</button>
+      <button onclick="location.href='sponsor-request.html'">🤝 Become a Sponsor</button>
+    </div>
+  </section>
+
+  <section class="carousel" data-aos="fade-up">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/event1.jpg" alt="Event 1" /></div>
+        <div class="swiper-slide"><img src="images/event2.jpg" alt="Event 2" /></div>
+        <div class="swiper-slide"><img src="images/event3.jpg" alt="Event 3" /></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <section class="how-it-works" data-aos="zoom-in">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div><img src="icons/form-icon.png" alt="Form" /><p>Submit Event Details</p></div>
+      <div><img src="icons/match-icon.png" alt="Match" /><p>We Match with Sponsors</p></div>
+      <div><img src="icons/handshake-icon.png" alt="Handshake" /><p>Get Connected</p></div>
+    </div>
+  </section>
+
+  <section class="trust" data-aos="fade-up">
+    <h2>Why Trust Sponsorease?</h2>
+    <ul>
+      <li>✅ Verified Sponsors</li>
+      <li>✅ Transparent Process</li>
+      <li>✅ Built for Organizers</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+  </footer>
+
+  <script>
+    AOS.init();
+    new Swiper('.mySwiper', {
+      loop: true,
+      autoplay: { delay: 3000 },
+      pagination: { el: '.swiper-pagination', clickable: true }
+    });
+  </script>
+</body>
+<script>
+  fetch('/check-session')
+    .then(res => res.json())
+    .then(data => {
+      const nav = document.querySelector('.nav-links');
+      if (data.loggedIn) {
+        nav.innerHTML += `<a href="logout">Logout</a>`;
+        document.querySelector('.site-header .logo-text').innerText = 'Welcome, ' + data.name;
+      }
+    });
+</script>
+
+</html>
