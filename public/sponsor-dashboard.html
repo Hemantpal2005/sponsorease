@@ -1,33 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Thank You - Sponsorease</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsor Dashboard - Sponsorease</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .dashboard {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    .event-card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .event-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .event-card p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .event-card button {
+      background-color: #00acc1;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .logout-btn {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
       <span class="logo-text">Sponsorease</span>
     </div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
+      <button class="logout-btn" onclick="logout()">Logout</button>
     </nav>
   </header>
 
-  <main class="thank-you">
-    <h1>🎉 Thank You!</h1>
-    <p>Your submission has been received. We’ll get in touch if there's a match.</p>
-    <a href="index.html" class="button">Back to Home</a>
+  <main class="dashboard">
+    <h2>Welcome, <span id="sponsorName">Sponsor</span>!</h2>
+    <p>Here are some event requests from organizers:</p>
+
+    <div id="request-list"></div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+    &copy; 2025 Sponsorease. All rights reserved.
   </footer>
+
+  <script>
+    document.getElementById("sponsorName").innerText = localStorage.getItem("sponsorName") || "Sponsor";
+
+    const sponsorEmail = localStorage.getItem("sponsorEmail") || "example@sponsor.com";
+
+    fetch('/requests.json')
+      .then(res => res.json())
+      .then(events => {
+        const listDiv = document.getElementById("request-list");
+        events.forEach((e, i) => {
+          const div = document.createElement('div');
+          div.className = 'event-card';
+          div.innerHTML = `
+            <h3>${e.eventTitle || 'Untitled Event'}</h3>
+            <p>Organizer: ${e.eventHostName || 'N/A'}</p>
+            <p>Budget: ${e.eventBudget || 'N/A'}</p>
+            <button onclick="expressInterest('${e.eventTitle}', '${e.eventHostEmail || 'unknown@example.com'}')">I'm Interested</button>
+          `;
+          listDiv.appendChild(div);
+        });
+      });
+
+    function expressInterest(event, userEmail) {
+      fetch('/express-interest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sponsorEmail, userEmail, event })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) alert(`Interest submitted for: ${event}`);
+      });
+    }
+
+    function logout() {
+      localStorage.removeItem("sponsorName");
+      localStorage.removeItem("sponsorEmail");
+      window.location.href = 'index.html';
+    }
+  </script>
 </body>
 </html>

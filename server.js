@@ -25,7 +25,6 @@ app.get('/signup', (req, res) => res.sendFile(path.join(__dirname, 'public/signu
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'public/login.html')));
 app.get('/role-select', (req, res) => res.sendFile(path.join(__dirname, 'public/role-select.html')));
 app.get('/user-request', (req, res) => res.sendFile(path.join(__dirname, 'public/user-request.html')));
-app.get('/sponsor-request', (req, res) => res.sendFile(path.join(__dirname, 'public/sponsor-request.html')));
 app.get('/thank-you', (req, res) => res.sendFile(path.join(__dirname, 'public/thank-you.html')));
 
 // Dashboards
@@ -36,7 +35,6 @@ app.get('/user-dashboard', (req, res) => {
     res.redirect('/login');
   }
 });
-
 app.get('/sponsor-dashboard', (req, res) => {
   if (req.session.userEmail) {
     res.sendFile(path.join(__dirname, 'public/sponsor-dashboard.html'));
@@ -57,9 +55,7 @@ app.post('/signup', (req, res) => {
   const users = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath)) : [];
 
   const userExists = users.find(u => u.email === email);
-  if (userExists) {
-    return res.send('User already exists. Please login.');
-  }
+  if (userExists) return res.send('User already exists. Please login.');
 
   users.push({ name, email, password });
   fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
@@ -115,18 +111,37 @@ app.post('/express-interest', (req, res) => {
   res.json({ success: true });
 });
 
+// Get Notifications for a User
+app.get('/notifications/:email', (req, res) => {
+  const email = req.params.email;
+  const connections = fs.existsSync('connections.json') ? JSON.parse(fs.readFileSync('connections.json')) : [];
+  const notifications = connections.filter(c => c.userEmail === email);
+  res.json(notifications);
+});
+
+// Messaging System
+app.post('/messages', (req, res) => {
+  const messages = fs.existsSync('messages.json') ? JSON.parse(fs.readFileSync('messages.json')) : [];
+  messages.push({ ...req.body, timestamp: new Date().toISOString() });
+  fs.writeFileSync('messages.json', JSON.stringify(messages, null, 2));
+  res.status(200).send({ success: true });
+});
+app.get('/messages', (req, res) => {
+  const { eventId } = req.query;
+  const messages = fs.existsSync('messages.json') ? JSON.parse(fs.readFileSync('messages.json')) : [];
+  const filtered = messages.filter(m => m.eventId === eventId);
+  res.json(filtered);
+});
+
+// Utility Routes
 app.get('/requests.json', (req, res) => {
   const data = fs.existsSync('requests.json') ? fs.readFileSync('requests.json') : '[]';
   res.type('application/json').send(data);
 });
-
 app.get('/connections.json', (req, res) => {
   const data = fs.existsSync('connections.json') ? fs.readFileSync('connections.json') : '[]';
   res.type('application/json').send(data);
 });
-
-app.listen(PORT, () => console.log(`Sponsorease running on http://localhost:${PORT}`));
-
 app.get('/check-session', (req, res) => {
   if (req.session.userEmail) {
     res.json({ loggedIn: true, name: req.session.userName });
@@ -135,3 +150,4 @@ app.get('/check-session', (req, res) => {
   }
 });
 
+app.listen(PORT, () => console.log(`Sponsorease running on http://localhost:${PORT}`));

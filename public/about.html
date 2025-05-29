@@ -1,45 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Sponsorease</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #1a237e;
+      margin-bottom: 10px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #444;
+      line-height: 1.7;
+      animation: slideUp 1.5s ease-in-out;
+    }
+
+    section {
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h2 {
+      color: #1a237e;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    .founder {
+      background: #f0f4f8;
+      padding: 20px;
+      border-left: 6px solid #1a237e;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
       <span class="logo-text">Sponsorease</span>
     </div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
       <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
-  <main class="about">
+  <main>
     <h1>About Sponsorease</h1>
-    <p>
-      Sponsorease is a platform built to solve the problem of connecting event organizers
-      with the right sponsors. Whether you're hosting a college fest, conference, or startup
-      launch — we help you get funded by verified sponsors who share your mission.
+    <p class="intro">
+      Sponsorease is a modern platform designed to simplify the way event organizers and sponsors connect. We eliminate the hassle of finding and securing sponsorships by creating a transparent, efficient, and accessible digital space where opportunities meet support.
     </p>
-    <p>
-      Our system matches your submitted event requests to relevant sponsors based on category,
-      budget, and purpose. Sponsors can browse submissions, express interest, and even schedule
-      meetings directly with organizers.
-    </p>
-    <p>
-      We're building a bridge between ambition and support — making sponsorships simple, fast,
-      and impactful.
-    </p>
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>
+        To empower events of all sizes — from college fests to corporate expos — by making sponsorship accessible, easy to manage, and effective. We believe in enabling meaningful collaborations between creators and companies.
+      </p>
+    </section>
+
+    <section>
+      <h2>What We Do</h2>
+      <ul>
+        <li>Connect event organizers with potential sponsors based on category and interest</li>
+        <li>Offer smart forms to gather detailed event data</li>
+        <li>Allow sponsors to browse events and choose who they want to support</li>
+        <li>Enable in-platform messaging and meeting scheduling</li>
+        <li>Provide a dashboard to track sponsorship progress and interest</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Meet the Creators</h2>
+      <div class="founder">
+        <p><strong>Hemant Pal</strong> is a Computer Science Engineering student at NIT Surat, batch of 2028. With a strong interest in solving real-world problems through technology, Hemant envisioned Sponsorease as a platform to simplify sponsorship connections and empower event creators nationwide.</p>
+        <p><strong>Sujal Chandwani</strong>, co-creator of Sponsorease, is pursuing MSc. Physics at NIT Surat, batch of 2029. With a deep analytical mindset and a passion for impact-driven innovation, Sujal brings strategic insights and technical excellence to the platform.</p>
+        <p>Together, they created Sponsorease with a shared belief: that organizing events and connecting with the right sponsors shouldn’t be a struggle — it should be simple, direct, and effective.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Message from the Founders</h2>
+      <div class="founder">
+        <p>We created Sponsorease to solve a problem we personally experienced — the hassle of knocking on countless doors and sending endless emails to find the right sponsors for great events. With this platform, we’re giving power back to organizers by simplifying the sponsorship process through a single, smart, and scalable solution.</p>
+        <p>Sponsorease is built to make it easier than ever to connect with sponsors — without needing to walk into 100 different offices. Everything is now online, transparent, and easier to manage.</p>
+        <p>We hope this platform empowers you to take your events to new heights.</p>
+        <p><strong>– Hemant & Sujal</strong></p>
+        <p>Follow us on Instagram:</p>
+        <ul>
+          <li>Hemant Pal: <a href="https://instagram.com/hemant_pal2005" target="_blank">@hemant_pal2005</a></li>
+          <li>Sujal Chandwani: <a href="https://instagram.com/sujal__chandwani" target="_blank">@sujal__chandwani</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Join the Sponsorship Revolution</h2>
+      <p>
+        Whether you're hosting your first tech event or managing a national-level conference, Sponsorease is here to support you with powerful tools and a growing network of sponsors. Start your journey with us today.
+      </p>
+    </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-logo">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" />
+      <p>Making Sponsorships Easier</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@sponsorease.in</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><img src="icons/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="icons/linkedin.png" alt="LinkedIn" /></a>
+        <a href="#"><img src="icons/instagram.png" alt="Instagram" /></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
     <p>&copy; 2025 Sponsorease. All rights reserved.</p>
-  </footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
 </body>
 </html>

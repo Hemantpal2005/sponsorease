@@ -1,16 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Submit Your Event - Sponsorease</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&libraries=places"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .form-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 30px 40px;
+      background: #f7f9fc;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1a237e;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .form-submit {
+      text-align: center;
+      grid-column: span 2;
+    }
+
+    .form-submit button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .form-submit button:hover {
+      background-color: #163078;
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+
+  <header>
     <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Logo" class="logo">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
       <span class="logo-text">Sponsorease</span>
     </div>
     <nav class="nav-links">
@@ -18,88 +127,95 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="signup.html">Sign Up</a>
-      <a href="logout">Logout</a>
+      <a href="logout.html">Logout</a>
     </nav>
   </header>
 
-  <main class="form-container">
-    <h1>Submit Your Event</h1>
-    <form action="/submit-user-request" method="POST" enctype="multipart/form-data">
-      <label for="eventTitle">Event Title:</label>
-      <input type="text" id="eventTitle" name="eventTitle" required>
-
-      <label for="eventHost">Event Host Name:</label>
-      <input type="text" id="eventHost" name="eventHost" required>
-
-      <label for="hostEmail">Event Host Email:</label>
-      <input type="email" id="hostEmail" name="hostEmail" required>
-
-      <label for="eventHead">Event Head Name:</label>
-      <input type="text" id="eventHead" name="eventHead" required>
-
-      <label for="eventEmail">Event Email ID:</label>
-      <input type="email" id="eventEmail" name="eventEmail" required>
-
-      <label for="location">Event Location:</label>
-      <input type="text" id="location" name="location" required>
-
-      <label for="date">Event Date:</label>
-      <input type="date" id="date" name="date" required>
-
-      <label for="duration">Duration (in days):</label>
-      <input type="number" id="duration" name="duration" required min="1">
-
-      <label for="audienceSize">Expected Audience Size:</label>
-      <input type="number" id="audienceSize" name="audienceSize" required>
-
-      <label for="description">Event Description:</label>
-      <textarea id="description" name="description" rows="4" required></textarea>
-
-      <label for="chiefGuests">Chief Guest(s):</label>
-      <input type="text" id="chiefGuests" name="chiefGuests" placeholder="Add names separated by commas" required>
-
-      <label for="sponsorshipAmount">Required Sponsorship Amount (INR):</label>
-      <input type="number" id="sponsorshipAmount" name="sponsorshipAmount" required>
-
-      <label for="brochure">Upload Event Brochure (PDF only):</label>
-      <input type="file" id="brochure" name="brochure" accept="application/pdf">
-
-      <label for="instagram">Instagram Link:</label>
-      <input type="url" id="instagram" name="instagram">
-
-      <label for="facebook">Facebook Link:</label>
-      <input type="url" id="facebook" name="facebook">
-
-      <label for="linkedin">LinkedIn Link:</label>
-      <input type="url" id="linkedin" name="linkedin">
-
-      <label for="benefits">What will the sponsor get?</label>
-      <textarea id="benefits" name="benefits" rows="3" required></textarea>
-
-      <label for="category">Event Category:</label>
-      <select id="category" name="category" required>
-        <option value="">Select Category</option>
-        <option value="Tech Fest">Tech Fest</option>
-        <option value="Cultural Fest">Cultural Fest</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Hackathon">Hackathon</option>
-        <option value="Sports">Sports</option>
-      </select>
-
-      <button type="submit">Submit Event</button>
-    </form>
+  <main>
+    <div class="form-wrapper">
+      <h2>Submit Your Event</h2>
+      <form method="POST" action="/submit-user-request" enctype="multipart/form-data">
+        <label>Event Title: <input type="text" name="eventTitle" required /></label>
+        <label>Event Host Name: <input type="text" name="hostName" required /></label>
+        <label>Event Host Email: <input type="email" name="hostEmail" required /></label>
+        <label>Event Head Name: <input type="text" name="eventHeadName" required /></label>
+        <label>Event Email ID: <input type="email" name="eventEmail" required /></label>
+        <label>Event Location: <input type="text" name="eventLocation" required /></label>
+        <label>Event Date: <input type="date" name="eventDate" required /></label>
+        <label>Duration (in days): <input type="number" name="eventDuration" required /></label>
+        <label>Expected Audience Size: <input type="number" name="audienceSize" /></label>
+        <label class="full-width">Event Description:
+          <textarea name="eventDescription" required></textarea>
+        </label>
+        <label>Chief Guest(s): <input type="text" name="chiefGuests" placeholder="Add names separated by commas" /></label>
+        <label>Required Sponsorship Amount (INR): <input type="number" name="sponsorshipAmount" /></label>
+        <label class="full-width">Upload Event Brochure (PDF only): <input type="file" name="brochure" accept="application/pdf" /></label>
+        <label>Instagram Link: <input type="url" name="instagram" /></label>
+        <label>Facebook Link: <input type="url" name="facebook" /></label>
+        <label>LinkedIn Link: <input type="url" name="linkedin" /></label>
+        <label class="full-width">What will the sponsor get?
+          <textarea name="sponsorBenefits" required></textarea>
+        </label>
+        <label class="full-width">Event Category:
+          <select name="eventCategory" required>
+            <option value="">Select Category</option>
+            <option value="Tech">Tech</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Business">Business</option>
+            <option value="Sports">Sports</option>
+            <option value="Social">Social</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <div class="form-submit">
+          <button type="submit">Submit Event</button>
+        </div>
+      </form>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
-  </footer>
+  <footer class="site-footer">
 
-  <script>
-    function initializeAutocomplete() {
-      const input = document.getElementById("location");
-      new google.maps.places.Autocomplete(input);
-    }
-    google.maps.event.addDomListener(window, "load", initializeAutocomplete);
-  </script>
+   <div class="footer-content">
+
+    <div class="footer-logo">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" />
+      <p>Making Sponsorships Easier</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@sponsorease.in</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><img src="icons/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="icons/linkedin.png" alt="LinkedIn" /></a>
+        <a href="#"><img src="icons/instagram.png" alt="Instagram" /></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Sponsorease. All rights reserved.</p>
+    <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+ </footer>
+
 </body>
 </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Sponsor Type - Sponsorease</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1a237e;
+      margin-bottom: 30px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .options button {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e3a8a;
+      color: white;
+      cursor: pointer;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .options button:hover {
+      background-color: #163078;
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #222831;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2>Select Your Sponsor Type</h2>
+      <div class="options">
+        <button onclick="window.location.href='sponsor-request-company.html'">
+          Corporate Sponsor
+        </button>
+        <button onclick="window.location.href='sponsor-request-vendor.html'">
+          Service/Product Sponsor
+        </button>
+        <button onclick="window.location.href='sponsor-request-other.html'">
+          Community Sponsor
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Sponsorease. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -2,38 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Sponsorease</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f4f6f9;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .back-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .form-wrapper {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .form-submit button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .form-submit button:hover {
+      background-color: #163078;
+    }
+
+    .signup-redirect {
+      text-align: center;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .signup-redirect a {
+      color: #1e3a8a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .signup-redirect a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
-      <span class="logo-text">Sponsorease</span>
-    </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-    </nav>
+  <header>
+    <!--<button class="back-button" onclick="history.back()">← Back</button>-->
+    <div><strong>Sponsorease</strong></div>
   </header>
 
-  <main class="login-container">
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-      <input type="email" name="email" placeholder="Email Address" required />
-      <select name="role" required>
-        <option value="">Select Role</option>
-        <option value="user">Organizer</option>
-        <option value="sponsor">Sponsor</option>
-      </select>
-      <button type="submit">Login</button>
-    </form>
+  <main>
+    <div class="form-wrapper">
+      <h2>Login to Sponsorease</h2>
+      <form method="POST" action="/login">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <div class="form-submit">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-logo">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" />
+      <p>Making Sponsorships Easier</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@sponsorease.in</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><img src="icons/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="icons/linkedin.png" alt="LinkedIn" /></a>
+        <a href="#"><img src="icons/instagram.png" alt="Instagram" /></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
     <p>&copy; 2025 Sponsorease. All rights reserved.</p>
-  </footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Other Sponsor Form - Sponsorease</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .form-wrapper {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 30px;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    label {
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+    input,
+    textarea,
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+    .form-submit {
+      text-align: center;
+      grid-column: span 2;
+    }
+    .form-submit button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .form-submit button:hover {
+      background-color: #163078;
+    }
+    footer {
+      background: #222831;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-wrapper">
+      <h2>Other Sponsor Application</h2>
+      <form method="POST" action="/submit-community-sponsor">
+        <label>Organization/Name:* <input type="text" name="name" required></label>
+        <label>Contact Person:* <input type="text" name="contactPerson" required></label>
+        <label>Email Address:* <input type="email" name="email" required></label>
+        <label>Phone Number:* <input type="tel" name="phone" required></label>
+        <label>Sponsor Type:* 
+          <select name="sponsorType" required>
+            <option value="">Select Type</option>
+            <option value="NGO">NGO</option>
+            <option value="Media Page">Media Page</option>
+            <option value="Individual">Individual</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>Website or Social Profile: <input type="url" name="website"></label>
+        <label class="full-width">How Do You Want to Support?:* 
+          <textarea name="support" placeholder="e.g., Promote event, provide volunteers, donate materials" required></textarea>
+        </label>
+        <label class="full-width">Why Would You Like to Sponsor?:* 
+          <textarea name="reason" placeholder="e.g., Community engagement, social responsibility, outreach" required></textarea>
+        </label>
+        <label class="full-width">Region or Community You Represent: 
+          <input type="text" name="region">
+        </label>
+        <label class="full-width">Additional Notes: 
+          <textarea name="notes"></textarea>
+        </label>
+        <div class="form-submit">
+          <button type="submit">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Sponsorease. All rights reserved.
+  </footer>
+</body>
+</html>

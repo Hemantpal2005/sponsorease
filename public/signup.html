@@ -1,45 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up - Sponsorease</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - Sponsorease</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f4f6f9;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+   /* .back-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }*/
+
+    .form-wrapper {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .form-submit button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .form-submit button:hover {
+      background-color: #163078;
+    }
+
+    .login-redirect {
+      text-align: center;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .login-redirect a {
+      color: #1e3a8a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .login-redirect a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .user-profile {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .logout-btn {
+      background: #c62828;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
-      <span class="logo-text">Sponsorease</span>
+
+  <header>
+    <!--<button class="back-button" onclick="history.back()">← Back</button>-->
+    <div><strong>Sponsorease</strong></div>
+    <div class="user-profile" style="display:none;">
+      <img src="images/default-profile.png" alt="User Profile" />
+      <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-    </nav>
   </header>
 
-  <main class="form-container">
-    <h1>Create Your Account</h1>
-    <form action="/signup" method="POST">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required />
+  <main>
+    <div class="form-wrapper">
+      <h2>Create Your Sponsorease Account</h2>
+      <form method="POST" action="/signup">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
 
-      <label for="password">Create Password:</label>
-      <input type="password" id="password" name="password" required />
+        <label for="password">Create Password:</label>
+        <input type="password" id="password" name="password" required>
 
-      <button type="submit">Sign Up</button>
-    </form>
+        <div class="form-submit">
+          <button type="submit">Sign Up</button>
+        </div>
 
-    <p style="margin-top: 15px;">Already have an account? <a href="login.html">Login here</a>.</p>
+        <div class="login-redirect">
+          Already have an account? <a href="login.html">Login here</a>
+        </div>
+      </form>
+    </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-logo">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" />
+      <p>Making Sponsorships Easier</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@sponsorease.in</p>
+      <p>Phone: +91 98765 43210</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><img src="icons/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="icons/linkedin.png" alt="LinkedIn" /></a>
+        <a href="#"><img src="icons/instagram.png" alt="Instagram" /></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
     <p>&copy; 2025 Sponsorease. All rights reserved.</p>
-  </footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = 'index.html';
+    }
+  </script>
+
 </body>
 </html>

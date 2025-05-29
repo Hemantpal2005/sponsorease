@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Sponsor Form - Sponsorease</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f4f6f9;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+    .nav-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .form-wrapper {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .form-submit {
+      text-align: center;
+      grid-column: span 2;
+    }
+
+    .form-submit button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .form-submit button:hover {
+      background-color: #163078;
+    }
+
+    footer {
+      background: #222831;
+      color: #eee;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
+      <span class="logo-text">Sponsorease</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="signup.html">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-wrapper">
+      <h2>Corporate Sponsor Application</h2>
+      <form method="POST" action="/submit-corporate-sponsor">
+        <label>Company Name:* <input type="text" name="companyName" required /></label>
+        <label>Contact Person:* <input type="text" name="contactPerson" required /></label>
+        <label>Email Address:* <input type="email" name="email" required /></label>
+        <label>Phone Number:* <input type="tel" name="phone" required /></label>
+        <label>Industry Sector:* <input type="text" name="industry" required /></label>
+        <label>Company Website: <input type="url" name="website" /></label>
+        <label>LinkedIn Profile: <input type="url" name="linkedin" /></label>
+        <label>Instagram Page: <input type="url" name="instagram" /></label>
+        <label>Facebook Page: <input type="url" name="facebook" /></label>
+        <label class="full-width">Company Overview:* <textarea name="overview" placeholder="Tell us more about your company..." required></textarea></label>
+        <label class="full-width">Sponsorship Goals:* <textarea name="goals" placeholder="Why do you want to sponsor? What are your objectives?" required></textarea></label>
+        <label class="full-width">Type of Events You Prefer to Sponsor:* <textarea name="eventTypes" placeholder="Tech Fests, Sports, Cultural, Seminars, etc." required></textarea></label>
+        <label class="full-width">Preferred Sponsorship Budget Range: <input type="text" name="budget" placeholder="e.g. ₹20,000 - ₹1,00,000" /></label>
+        <label class="full-width">Additional Notes or Questions: <textarea name="notes"></textarea></label>
+        <div class="form-submit">
+          <button type="submit">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Sponsorease. All rights reserved.
+  </footer>
+</body>
+</html>

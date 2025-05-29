@@ -2,32 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Thank You - Sponsorease</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard - Sponsorease</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, #1a237e, #00acc1);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+    .nav-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .notification {
+      background: #fff3cd;
+      color: #856404;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ffeeba;
+      border-radius: 8px;
+    }
+    .event-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #222831;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="logo-container">
-      <img src="images/sponsorease_logo.webp" alt="Sponsorease Logo" class="logo" />
+      <img src="images/sponsorease_logo.png" alt="Sponsorease Logo" class="logo" />
       <span class="logo-text">Sponsorease</span>
     </div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
       <a href="signup.html">Sign Up</a>
     </nav>
   </header>
 
-  <main class="thank-you">
-    <h1>🎉 Thank You!</h1>
-    <p>Your submission has been received. We’ll get in touch if there's a match.</p>
-    <a href="index.html" class="button">Back to Home</a>
+  <main>
+    <h1>Welcome to Your Dashboard</h1>
+    <div id="notification-area"></div>
+    <div id="user-events">
+      <!-- Event cards or data can be shown here -->
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2025 Sponsorease. All rights reserved.</p>
   </footer>
+
+  <script>
+    const userEmail = localStorage.getItem("userEmail") || "demo@user.com";
+
+    fetch(`/notifications/${userEmail}`)
+      .then(res => res.json())
+      .then(data => {
+        const area = document.getElementById("notification-area");
+        if (data.length > 0) {
+          data.forEach(n => {
+            const div = document.createElement('div');
+            div.className = 'notification';
+            div.innerHTML = `Sponsor <strong>${n.sponsorEmail}</strong> is interested in your event <strong>${n.event}</strong>. <a href="chat.html?eventId=${encodeURIComponent(n.event)}&sponsor=${encodeURIComponent(n.sponsorEmail)}">Chat Now</a>`;
+            area.appendChild(div);
+          });
+        }
+      });
+  </script>
 </body>
 </html>
